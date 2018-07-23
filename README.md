@@ -12,6 +12,7 @@ mvn clean install
 ```bash
 > mkdir -p modules/swiss/sib/keycloak/main/
 > cp /tmp/sib-group-membership-mapper.jar modules/swiss/sib/keycloak/main/
+> touch modules/swiss/sib/keycloak/main/module.xml
 > tree modules/swiss/sib/keycloak/main/
 modules/swiss/sib/keycloak/main/
 ├── module.xml
