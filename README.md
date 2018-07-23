@@ -50,34 +50,6 @@ vi standalone/configuration/standalone.xml
 
 ```
 
-### First implemtentation was simply like this:
-```java
-public class SIBGroupMembershipMapper extends GroupMembershipMapper  {
-
-    public static final String PROVIDER_ID = "sib-group-membership-mapper";
-
-    @Override
-    protected void setClaim(IDToken token, ProtocolMapperModel mappingModel, UserSessionModel userSession) {
-
-        List<Map<String, String>> membership = new LinkedList<>();
-        boolean fullPath = useFullPath(mappingModel);
-        for (GroupModel group : userSession.getUser().getGroups()) {
-            if (fullPath) {
-                membership.add(new HashMap<String, String>(){{put("sib_group_name", ModelToRepresentation.buildGroupPath(group));}});
-            } else {
-                membership.add(new HashMap<String, String>(){{put("sib_group_name", group.getName());}});
-            }
-        }
-        String protocolClaim = mappingModel.getConfig().get(OIDCAttributeMapperHelper.TOKEN_CLAIM_NAME);
-
-        token.getOtherClaims().put(protocolClaim, membership);
-    }
-
-
-}
-
-```
-
 ## Error produced
 ```bash
 
@@ -137,4 +109,33 @@ Caused by: org.jboss.modules.ModuleNotFoundException: swiss.sib.keycloak.sib-gro
     Caused by: java.lang.RuntimeException: RESTEASY003325: Failed to construct public org.keycloak.services.resources.KeycloakApplication(javax.servlet.ServletContext,org.jboss.resteasy.core.Dispatcher)
     Caused by: java.lang.RuntimeException: org.jboss.modules.ModuleNotFoundException: swiss.sib.keycloak.sib-group-membership-mapper
     Caused by: org.jboss.modules.ModuleNotFoundException: swiss.sib.keycloak.sib-group-membership-mapper"}}
+```
+
+
+### First implemtentation was simply like this:
+```java
+public class SIBGroupMembershipMapper extends GroupMembershipMapper  {
+
+    public static final String PROVIDER_ID = "sib-group-membership-mapper";
+
+    @Override
+    protected void setClaim(IDToken token, ProtocolMapperModel mappingModel, UserSessionModel userSession) {
+
+        List<Map<String, String>> membership = new LinkedList<>();
+        boolean fullPath = useFullPath(mappingModel);
+        for (GroupModel group : userSession.getUser().getGroups()) {
+            if (fullPath) {
+                membership.add(new HashMap<String, String>(){{put("sib_group_name", ModelToRepresentation.buildGroupPath(group));}});
+            } else {
+                membership.add(new HashMap<String, String>(){{put("sib_group_name", group.getName());}});
+            }
+        }
+        String protocolClaim = mappingModel.getConfig().get(OIDCAttributeMapperHelper.TOKEN_CLAIM_NAME);
+
+        token.getOtherClaims().put(protocolClaim, membership);
+    }
+
+
+}
+
 ```
