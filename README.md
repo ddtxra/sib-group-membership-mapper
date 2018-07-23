@@ -7,7 +7,8 @@ Attempts to create a keycloak group membership mapper, where an array of object 
 mvn clean install
 ```
 
-# Create the structures in keycloak instance and copy there the jar file
+# Create the structures in keycloak instance and copy there the jar file
+
 ```bash
 -bash-4.1$ tree modules/swiss/sib/keycloak/main/
 modules/swiss/sib/keycloak/main/
@@ -15,6 +16,7 @@ modules/swiss/sib/keycloak/main/
 └── sib-group-membership-mapper.jar
 ```
 
+## Content of the module.xml
 my module.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -74,7 +76,7 @@ public class SIBGroupMembershipMapper extends GroupMembershipMapper  {
 
 ```
 
-# Error produced
+## Error produced
 ```bash
 
 18:02:37,579 ERROR [org.jboss.msc.service.fail] (ServerService Thread Pool -- 48) MSC000001: Failed to start service jboss.undertow.deployment.default-server.default-host./auth: org.jboss.msc.service.StartException in service jboss.undertow.deployment.default-server.default-host./auth: java.lang.RuntimeException: RESTEASY003325: Failed to construct public org.keycloak.services.resources.KeycloakApplication(javax.servlet.ServletContext,org.jboss.resteasy.core.Dispatcher)
