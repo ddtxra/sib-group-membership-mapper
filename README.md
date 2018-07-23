@@ -19,8 +19,7 @@ modules/swiss/sib/keycloak/main/
 └── sib-group-membership-mapper.jar
 ```
 
-## Content of the module.xml
-my module.xml
+## Content of module.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.3" name="swiss.sib.keycloak.sib-group-membership-mapper">
