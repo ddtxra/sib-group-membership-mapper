@@ -2,12 +2,12 @@
 
 Attempts to create a keycloak group membership mapper, where an array of object is created instead of an array of string
 
-# Build the jar
+## Build the jar
 ```bash
 mvn clean install
 ```
 
-# Create the structures in keycloak instance and copy there the jar file
+## Create the structures in keycloak instance and copy there the jar file
 
 ```bash
 > mkdir -p modules/swiss/sib/keycloak/main/
@@ -50,7 +50,7 @@ vi standalone/configuration/standalone.xml
 
 ```
 
-# First implemtentation was simply like this:
+### First implemtentation was simply like this:
 ```java
 public class SIBGroupMembershipMapper extends GroupMembershipMapper  {
 
