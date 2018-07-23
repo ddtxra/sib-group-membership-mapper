@@ -10,7 +10,9 @@ mvn clean install
 # Create the structures in keycloak instance and copy there the jar file
 
 ```bash
--bash-4.1$ tree modules/swiss/sib/keycloak/main/
+> mkdir -p modules/swiss/sib/keycloak/main/
+> cp /tmp/sib-group-membership-mapper.jar modules/swiss/sib/keycloak/main/
+> tree modules/swiss/sib/keycloak/main/
 modules/swiss/sib/keycloak/main/
 ├── module.xml
 └── sib-group-membership-mapper.jar
