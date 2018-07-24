@@ -17,7 +17,9 @@ import java.util.*;
  */
 public class SIBGroupMembershipMapper extends AbstractOIDCProtocolMapper implements OIDCAccessTokenMapper, OIDCIDTokenMapper, UserInfoTokenMapper {
 
-    private static final List<ProviderConfigProperty> configProperties = new ArrayList<>();
+    public static final String PROVIDER_ID = "sib-group-membership-mapper";
+
+    private static final List<ProviderConfigProperty> configProperties = new ArrayList<ProviderConfigProperty>();
 
     static {
         OIDCAttributeMapperHelper.addTokenClaimNameConfig(configProperties);
@@ -29,10 +31,8 @@ public class SIBGroupMembershipMapper extends AbstractOIDCProtocolMapper impleme
         property1.setHelpText("Include full path to group i.e. /top/level1/level2, false will just specify the group name");
         configProperties.add(property1);
 
-        OIDCAttributeMapperHelper.addIncludeInTokensConfig(configProperties, SIBGroupMembershipMapper.class);
+        OIDCAttributeMapperHelper.addIncludeInTokensConfig(configProperties, GroupMembershipMapper.class);
     }
-
-    public static final String PROVIDER_ID = "sib-group-membership-mapper";
 
 
     public List<ProviderConfigProperty> getConfigProperties() {
@@ -46,7 +46,7 @@ public class SIBGroupMembershipMapper extends AbstractOIDCProtocolMapper impleme
 
     @Override
     public String getDisplayType() {
-        return "SIB Group Membership";
+        return "Group Membership";
     }
 
     @Override
@@ -56,7 +56,7 @@ public class SIBGroupMembershipMapper extends AbstractOIDCProtocolMapper impleme
 
     @Override
     public String getHelpText() {
-        return "Map sib user group membership";
+        return "Map user group membership";
     }
 
     public static boolean useFullPath(ProtocolMapperModel mappingModel) {
@@ -85,6 +85,7 @@ public class SIBGroupMembershipMapper extends AbstractOIDCProtocolMapper impleme
 
         token.getOtherClaims().put(protocolClaim, membership);
     }
+
 
     public static ProtocolMapperModel create(String name,
                                              String tokenClaimName,
