@@ -19,9 +19,9 @@ scp target/sib-group-membership-mapper.jar username@remote-keycloak-server:/tmp
 ### Or create the structure manually
 
 ```bash
-> mkdir -p modules/swiss/sib/keycloak/main/
-> cp /tmp/sib-group-membership-mapper.jar modules/swiss/sib/keycloak/main/
-> touch modules/swiss/sib/keycloak/main/module.xml
+> mkdir -p modules/swiss/sib/keycloak/sib-group-membership-mapper/main/
+> cp /tmp/sib-group-membership-mapper.jar modules/swiss/sib/keycloak/sib-group-membership-mapper/main/
+> touch modules/swiss/sib/keycloak/sib-group-membership-mapper/main/module.xml
 > tree modules/swiss/sib/
   modules/swiss/sib/
   └── keycloak
